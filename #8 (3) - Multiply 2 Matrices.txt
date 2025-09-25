@@ -1,0 +1,59 @@
+
+#include <iostream>
+using namespace std;
+
+int RandomNumber(int from, int to)
+{
+	return (rand() % (to - from + 1) + from);
+}
+void FillMatrixWithOrderedNumbers(short arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++) 
+		{
+			arr[i][j] = RandomNumber(1,10);
+		}
+	}
+}
+
+void MultiplyMatrix(short array1[3][3], short array2[3][3],short MulttiplicationTwoMatrix[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			MulttiplicationTwoMatrix[i][j] = array1[i][j] * array2[i][j];
+		}
+	}
+}
+void PrintMatrix(short arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++) {
+		for (short j = 0; j < Cols; j++) {
+			printf( " %0*d  ",2, arr[i][j]);
+		}
+		cout << "\n";
+	}
+}
+
+
+int main() {
+	srand(time(NULL));  
+
+	short Array1[3][3],Array2[3][3], MatrixResults[3][3];
+
+	FillMatrixWithOrderedNumbers(Array1, 3, 3);
+	cout << "Matrix1 :\n\n";
+	PrintMatrix(Array1, 3, 3);
+
+	FillMatrixWithOrderedNumbers(Array2, 3, 3);
+	cout << "Matrix2 :\n\n";
+	PrintMatrix(Array2, 3, 3);
+
+
+	cout << "Results :\n\n";
+	MultiplyMatrix(Array1, Array2, MatrixResults, 3, 3);
+	PrintMatrix(MatrixResults, 3, 3);
+
+	return 0;
+
+}

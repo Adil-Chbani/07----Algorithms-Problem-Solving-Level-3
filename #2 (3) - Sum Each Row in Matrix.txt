@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+int RandomNumber(int form , int to)
+{
+	return (rand() % (to - form + 1) + form);
+}
+
+
+
+void FillMatrixWithRandomNumbers(int Number[3][3],int Rows , int Cols)
+{
+	
+
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Cols; j++)
+		{
+	        int TakeNumber = RandomNumber(1, 100);
+			Number[i][j] = TakeNumber;
+	    }
+
+	}
+}
+
+void PintMatrix(int Number[3][3], int Rows, int Cols)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Cols; j++)
+		{
+			cout <<setw(3) << Number[i][j]<< "   ";
+		}
+		cout << endl;
+	}
+}
+
+int RowSum(int arr[3][3], int RowsNumber, int cols)
+{
+	int Sum = 0;
+	for (int j = 0; j < cols; j++)
+	{
+		Sum += arr[RowsNumber][j];
+	}
+	return Sum;
+}
+
+void PrintSum(int arr[3][3], int Rows, int cols)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		cout << "Row " << i + 1 << " Sum = " << RowSum(arr, i, cols) <<endl ;
+	}
+}
+
+int main() 
+{
+	srand(time(NULL));
+	int Number[3][3];
+	cout << "\nThe following is a 3x3 random matrix:\n\n";
+	FillMatrixWithRandomNumbers(Number,3,3);
+	PintMatrix(Number,3,3);
+	cout << "\nThe the following are the sum of each row in the matrix:\n"; 
+	PrintSum(Number,3,3);
+
+}

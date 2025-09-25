@@ -1,0 +1,58 @@
+
+#include <iostream>
+using namespace std;
+
+int RandomNumber(int from, int to) {
+	return rand() % (to - from + 1) + from;
+}
+
+void FillMatrixWithRandomNumbers(int arr[3][3], int Rows, int Cols) {
+	for (int i = 0; i < Rows; i++) {
+		for (int j = 0; j < Cols; j++) {
+			arr[i][j] = RandomNumber(1, 10);
+		}
+	}
+}
+
+void PrintMatrix(int arr[3][3], int Rows, int Cols) {
+	for (int i = 0; i < Rows; i++) {
+		for (int j = 0; j < Cols; j++) {
+			printf(" %02d ", arr[i][j]);
+		}
+		cout << "\n";
+	}
+}
+
+void PrintMiddleRow(int arr[3][3], int Rows, int Cols) {
+	int middleRow = Rows / 2;
+	for (int j = 0; j < Cols; j++) {
+		printf(" %02d ", arr[middleRow][j]);
+	}
+	cout << "\n";
+}
+
+void PrintMiddleCol(int arr[3][3], int Rows, int Cols) {
+	int middleCol = Cols / 2;
+	for (int i = 0; i < Rows; i++) {
+		printf(" %02d ", arr[i][middleCol]);
+	}
+	cout << "\n";
+}
+
+int main() {
+	srand(static_cast<unsigned>(time(nullptr))); 
+
+	int Matrix[3][3];
+	FillMatrixWithRandomNumbers(Matrix, 3, 3);
+
+	cout << "Matrix:\n";
+	PrintMatrix(Matrix, 3, 3);
+
+	cout << "\nMiddle Row:\n";
+	PrintMiddleRow(Matrix, 3, 3);
+
+	cout << "\nMiddle Column:\n";
+	PrintMiddleCol(Matrix, 3, 3);
+
+	return 0;
+}

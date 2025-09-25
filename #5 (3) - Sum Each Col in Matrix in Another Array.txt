@@ -1,0 +1,74 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int RandomNumber(int from, int to)
+{
+	return (rand() % (to - from + 1) + from);
+}
+
+void FillMatrixWithRandomNumbers(int array[3][3],int Rows,int Cols)
+{
+
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Rows; j++)
+		{
+			array[i][j] = RandomNumber(1, 100);
+		}
+
+	}
+}
+
+void PrintMatrix(int array[3][3], int Rows, int Cols)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Rows; j++)
+		{
+			cout << setw(3) << array[i][j] << "   ";
+		}
+		cout << endl;
+	}
+}
+
+int SumCols(int array[3][3], int Rows, int Cols)
+{
+	int Sum = 0;
+	for (int i = 0; i < Rows; i++)
+	{
+		Sum += array[i][Cols];
+	}
+	return Sum;
+}
+
+void SumMatixColsInArry(int array[3][3], int arraySumCols[3], int Rows, int Cols)
+{
+	for (int i = 0; i < Cols; i++)
+	{
+		arraySumCols[i] = SumCols(array, Rows, i);
+	}
+}
+
+void PrintEachColSum(int array[3][3], int arraySumCols[3], int Rows, int Cols)
+{
+	 cout << "The the following are the sum of each col in the matrix: " << endl;
+	for (int i = 0; i < Cols; i++)
+	{
+		cout << "Col "<<i+1<<" Sum = " << arraySumCols[i] << endl;
+	}
+}
+
+int main()
+{ 
+	srand(time(NULL));
+	int array[3][3] , arraySum[3];
+	cout << "The following is a 3*3 random matrix: " << endl;
+
+	 FillMatrixWithRandomNumbers(array,3,3);
+	 PrintMatrix(array, 3, 3);
+
+	 SumMatixColsInArry(array, arraySum, 3, 3);
+	 PrintEachColSum(array, arraySum, 3, 3);
+
+}
