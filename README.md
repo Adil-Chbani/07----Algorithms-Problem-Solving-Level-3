@@ -39,6 +39,6 @@ After completing this level, I progressed to **08 - Algorithms & Problem Solving
 ---
 
 ## 📬 Connect
-- **GitHub:** [AhmedYaser-Mt](https://github.com/AhmedYaser-Mt)
-- **LinkedIn:** [Ahmed Yasser](https://www.linkedin.com/in/ahmed-yaser-mt)
+- **GitHub:** [Adil-Chbani](https://github.com/Adil-Chbani/Adil-Chbani)
+- **LinkedIn:** [Adil Chbani](https://www.linkedin.com/in/adil-chbani-866734292/)
 
