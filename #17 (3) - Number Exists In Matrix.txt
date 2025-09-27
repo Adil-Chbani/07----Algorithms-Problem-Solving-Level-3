@@ -1,0 +1,66 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+int ReadNumber()
+{
+	int Number = 0;
+	do
+	{
+		cout << "Enter the Number to look for in Matrix ? ";
+		cin >> Number;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Please Enter Number Not Caracters (Ex:5 ) : ";
+			cin >> Number;
+		}
+	}while(Number < 0);
+	return Number;
+}
+void PrintMatrix(int arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++) {
+		for (short j = 0; j < Cols; j++) {
+			cout << setw(3) << arr[i][j] << "     ";
+		}
+		cout << "\n";
+	}
+}
+
+bool IsNumberInMatrix(int Matrix[3][3], short Rows, short Cols,int CheckNumber) 
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if (Matrix[i][j] == CheckNumber)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+int main() {
+	int Matrix1[3][3] = { 
+		{1,4,7},
+		{2,5,8},
+		{3,6,5} 
+	};
+
+	cout << "\nMatrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+	int SearchNumber = ReadNumber();
+	if (IsNumberInMatrix(Matrix1, 3, 3,SearchNumber))
+	{
+		cout << "Yes it is there\n";
+	}
+	else
+	{
+		cout << "No it's Not there\n";
+	}
+	
+	return 0;
+}

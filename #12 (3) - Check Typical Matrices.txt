@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+int RandomNumber(int from, int to)
+{
+	return (rand() % (to - from + 1) + from);
+}
+void FillMatrixWithOrderedNumbers(short arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++) 
+		{
+			arr[i][j] = RandomNumber(1,10);
+		}
+	}
+}
+
+   
+
+bool AreTypicalMatrices(short array1[3][3], short array2[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if(array1[i][j] != array2[i][j])
+			{
+				return false;
+			}
+			
+		}
+	}
+	    return true;
+}
+
+
+void PrintMatrix(short arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) {
+		for (short j = 0; j < Cols; j++)
+		{
+			printf(" %0*d  ", 2, arr[i][j]);
+		}
+		cout << "\n";
+	}
+}
+int main() {
+	srand(time(NULL));  
+
+	short Array1[3][3],Array2[3][3];
+
+	FillMatrixWithOrderedNumbers(Array1, 3, 3);
+	cout << "Matrix1 :\n";
+	PrintMatrix(Array1, 3, 3);
+
+	FillMatrixWithOrderedNumbers(Array2, 3, 3);
+	cout << "\nMatrix2 :\n";
+	PrintMatrix(Array2, 3, 3);
+
+
+	if (AreTypicalMatrices(Array1,Array2, 3, 3))
+	{
+		cout << "Yes :Matrix is Typical";
+	}
+	else
+	{
+		cout << "No :Matrix are Not Typical";
+
+	}
+	return 0;
+
+
+}

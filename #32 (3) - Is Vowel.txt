@@ -1,0 +1,34 @@
+#include <string>
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+char ReadChar() {
+	char text;
+	cout << "Please Enter Character ?\n";
+	cin >> text;
+	return text;
+}
+
+bool IsVowel(char ch)
+{
+	ch = tolower(ch);
+	return ((ch == 'a') || (ch == 'e') || (ch == 'i') || (ch == 'o') || (ch == 'u'));
+}
+
+int main() {
+	char Character = ReadChar();
+	
+	if (IsVowel(Character))
+	{
+	cout << "Yes Letter "<<Character<<" is Vowel" << endl;
+	}
+	else
+	{
+		cout << "No Letter " << Character << " is Not Vowel" << endl;
+
+	}
+
+	return 0;
+}

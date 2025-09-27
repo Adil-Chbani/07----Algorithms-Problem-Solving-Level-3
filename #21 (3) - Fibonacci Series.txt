@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+void PrintFibonacci(int n)
+{
+    int prev1 = 1, prev2 = 0;
+    int sum;
+    cout << "Fibonacci sequence: ";
+    for (int i = 1; i <= n; i++)
+    {
+        sum = prev1 + prev2;
+        cout << sum << "  ";
+        prev2 = prev1;
+        prev1 = sum;
+    }
+    cout << endl;
+}
+
+int main()
+{
+    PrintFibonacci(10);
+    return 0;
+}

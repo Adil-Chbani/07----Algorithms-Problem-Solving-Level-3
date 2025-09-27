@@ -1,0 +1,20 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void FillIsFibonacci(int Number , int Prev2 , int Prev1)
+{
+	int Sum = 0;
+	if (Number > 0)
+	{
+		Sum = Prev1 + Prev2;
+		cout << Sum << "   ";
+		Prev2 = Prev1;
+		Prev1 = Sum;
+	   FillIsFibonacci(Number - 1 ,Prev2,Prev1);
+	}
+}
+int main() {
+	FillIsFibonacci(10,0,1);
+	return 0;
+}

@@ -1,0 +1,56 @@
+#include <string>
+#include <iostream>
+#include <string>
+using namespace std;
+
+string ReadString() {
+	string text;
+	cout << "Please Enter Your Text?\n";
+	 getline(cin, text);
+	return text;
+}
+char ReadChar() {
+	char text;
+	cout << "Please Enter Character ?\n";
+	cin >> text;
+	return text;
+}
+
+char InvertLetterCase(char c)
+{
+	return (isupper(c) ? tolower(c) : toupper(c));
+}
+
+int CountLetter(string S1,char NumberCharacter,bool MatchCase = true)
+{
+	int count = 0;
+	for (int i = 0; i < S1.length(); i++)
+	{
+		if (MatchCase)
+		{
+          if (S1[i] == NumberCharacter)
+		  {
+			count++;
+		  }
+		}
+		else
+		{
+			if (tolower(S1[i]) == tolower(NumberCharacter))
+			{
+				count++;
+			}
+		}
+		
+	}
+	return count;
+}
+
+int main() {
+	string Str = ReadString();
+	char NumberCharacter = ReadChar();
+	
+	cout << "Letter "<<NumberCharacter<<" count = " << CountLetter(Str, NumberCharacter) << endl;
+	cout << "Letter '" << NumberCharacter <<"' or '" << InvertLetterCase(NumberCharacter) <<"' count = " << CountLetter(Str, NumberCharacter,false) << endl;
+
+	return 0;
+}

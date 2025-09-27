@@ -1,0 +1,35 @@
+#include <string>
+#include <iostream>
+#include <string>
+using namespace std;
+
+string ReadString() {
+	string text;
+	cout << "Please Enter Your Text?\n";
+	getline(cin, text);
+	return text;
+}
+void PrintWords(string S1)
+{
+	int pos = 0;
+	string delim = " ";
+	string Words;
+	cout << "Your String Words are : \n\n";
+	while ((pos = S1.find(delim)) != S1.npos)
+	{
+		Words = S1.substr(0, pos);
+		if (Words != " ")
+		{
+			cout << Words << endl;
+		}
+		S1.erase(0, pos + delim.length());
+	}
+	if (S1 != " ")
+	{
+		cout << S1 << endl;
+	}
+}
+int main() {
+	PrintWords(ReadString()) ;
+	return 0;
+}

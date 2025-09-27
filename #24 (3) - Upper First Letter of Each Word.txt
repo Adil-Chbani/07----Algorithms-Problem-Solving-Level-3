@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string ReadText()
+{
+	string text;
+	cout << "Enter Your String : ";
+	getline(cin, text);
+	return text;
+}
+
+string UpperFirstLetterOfEachWord(string text)
+{
+	bool isFirstLetter = true;
+	for (int i = 0; i < text.length(); i++)
+	{
+		if (text[i] != ' ' && isFirstLetter)
+		{
+			text[i] = toupper(text[i]);
+		}
+		isFirstLetter = (text[i] == ' ') ? true : false;
+	}
+	return text;
+}
+
+int main()
+{
+	string text = ReadText();
+	cout << text << endl;
+	cout << "\nString after conversion:\n";
+	cout<<UpperFirstLetterOfEachWord(text);
+}

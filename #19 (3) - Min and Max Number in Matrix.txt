@@ -1,0 +1,66 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+#include <set>
+using namespace std;
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++) {
+		for (short j = 0; j < Cols; j++) {
+			cout << setw(3) << arr[i][j] << "     ";
+		}
+		cout << "\n";
+	}
+	cout << endl;
+}
+
+int CheckMaxNumberInMatrix(int Matrix1[3][3], short Rows, short Cols)
+{
+	int Number = Matrix1[0][0];
+
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if (Matrix1[i][j] > Number)
+			{
+				Number = Matrix1[i][j];
+			}
+		}
+	}
+	return Number;
+}
+int CheckMinimumNumberInMatrix(int Matrix1[3][3], short Rows, short Cols)
+{
+	int Number = Matrix1[0][0];
+
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if ( Matrix1[i][j]<Number)
+			{
+				Number = Matrix1[i][j];
+
+			}
+		}
+	}
+	return Number;
+}
+
+
+int main() {
+	int Matrix1[3][3] = {
+		{1,4,700},
+		{2,5,8},
+		{3,0,5}
+	};
+
+
+	cout << "\nMatrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+	cout << "Minimum Number is : " << CheckMinimumNumberInMatrix(Matrix1,3,3) << endl;
+	cout << "Max Number is : " << CheckMaxNumberInMatrix(Matrix1,3,3) << endl;
+
+	return 0;
+}

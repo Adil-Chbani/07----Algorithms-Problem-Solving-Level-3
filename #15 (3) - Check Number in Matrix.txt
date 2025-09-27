@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+int ReadNumber()
+{
+	int Number = 0;
+	do
+	{
+		cout << "Enter Your Number to count in Matrix ? ";
+		cin >> Number;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Please Enter Number Not Caracters Ex(5 ...) : ";
+			cin >> Number;
+		}
+	} while (Number < 0);
+	return Number;
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++) {
+		for (short j = 0; j < Cols; j++) {
+			cout << setw(3) << arr[i][j] << "     ";
+		}
+		cout << "\n";
+	}
+}
+
+int GiveCountNumber(int Matrix[3][3], short Rows, short Cols, int NumberSearch) 
+{
+	int Count = 0;
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			if (Matrix[i][j] == NumberSearch)
+			{
+				Count++;
+			}
+		}
+	}
+	return Count ;
+}
+
+int main() {
+	int Matrix1[3][3] = { {5,5,12}, {0,5,55}, {0,0,5} };
+
+	cout << "\nMatrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+	int NumberSearch = ReadNumber();
+	cout << "Number " << NumberSearch << " count in Matrix is :  " << GiveCountNumber(Matrix1, 3, 3, NumberSearch) <<endl ;
+
+	return 0;
+}

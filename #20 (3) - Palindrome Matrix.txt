@@ -1,0 +1,50 @@
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols) {
+	for (short i = 0; i < Rows; i++) {
+		for (short j = 0; j < Cols; j++) {
+			cout << setw(3) << arr[i][j] << "     ";
+		}
+		cout << "\n";
+	}
+	cout << endl;
+}
+
+bool IsPalindromeMatrix(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols / 2; j++) 
+		{
+
+			if (arr[i][j] != arr[i][Cols - 1 - j])
+			{
+				return false;
+			}
+		}
+
+	}
+	return true;
+}
+int main() {
+	int Matrix1[3][3] = {
+		{1,2,1},
+		{5,8,5},
+		{0,0,0}
+	};
+
+	cout << "\nMatrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+	if (IsPalindromeMatrix(Matrix1, 3, 3))
+	{
+		cout << "Yes Matrix is Palidrom\n";
+	}
+	else
+	{
+		cout << "No Matrix is Not Palidrom\n";
+	}
+	return 0;
+}
