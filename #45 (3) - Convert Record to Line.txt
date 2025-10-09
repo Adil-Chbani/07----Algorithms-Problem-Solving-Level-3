@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+struct Information
+{
+	string NumberAccount;
+	string Name;
+	string PinCode;
+	string Phone;
+	double AccountBalance;
+};
+Information ReadNewClient()
+{
+	Information info;
+	int ;
+	cout << "Enter Account Number ? ";
+	 getline(cin,info.NumberAccount);
+	cout << "Enter PinCode ? ";
+	getline(cin, info.PinCode);
+
+	cout << "Enter Name ? ";
+	getline(cin,info.Name);
+
+	cout << "Enter Phone ? ";
+	getline(cin,info.Phone);
+
+	cout << "Enter AccountBalance ? ";
+	cin>>info.AccountBalance;
+
+	return info;
+	
+}
+
+string ConvertRecordToLine(Information info,string Delimiter= "#//#")
+{
+	string stClientRecord = "";
+	stClientRecord = info.NumberAccount + Delimiter;
+	stClientRecord += info.PinCode + Delimiter;
+	stClientRecord += info.Name + Delimiter;
+	stClientRecord += info.Phone + Delimiter;
+	stClientRecord += to_string(info.AccountBalance);
+
+	return stClientRecord;
+}
+
+
+int main()
+{
+	Information info = ReadNewClient();
+	cout << "\n\nClient Record for Saving is : \n";
+	cout << ConvertRecordToLine(info);
+}

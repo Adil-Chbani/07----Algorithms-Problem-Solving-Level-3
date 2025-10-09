@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+string NomFile = "FileInformation.txt";
+struct Information
+{
+	string NumberAccount;
+	string Name;
+	string PinCode;
+	string Phone;
+	double AccountBalance;
+};
+
+Information ReadNewClient()
+{
+	Information info;
+	cout << "Please Enter Client Data :\n\n";
+	cout << "Enter Account Number ? ";
+	getline(cin >> ws, info.NumberAccount);
+	cout << "Enter PinCode ? ";
+	getline(cin, info.PinCode);
+
+	cout << "Enter Name ? ";
+	getline(cin, info.Name);
+
+	cout << "Enter Phone ? ";
+	getline(cin, info.Phone);
+
+	cout << "Enter AccountBalance ? ";
+	cin >> info.AccountBalance;
+
+	return info;
+
+}
+
+string ConvertRecordToLine(Information info, string Delimiter="#//#")
+{
+	string stClientRecord = "";
+	stClientRecord = info.NumberAccount + Delimiter;
+	stClientRecord += info.PinCode + Delimiter;
+	stClientRecord += info.Name + Delimiter;
+	stClientRecord += info.Phone + Delimiter;
+	stClientRecord += to_string(info.AccountBalance);
+	return stClientRecord;
+}
+//AddNewClient /AddClients
+void AddDataLineToFile(string NomFile , string SData)
+{
+	fstream file;
+	file.open(NomFile, ios::out | ios::app);
+	if (file.is_open())
+	{
+		file << SData << endl;
+	}
+	file.close();
+}
+
+void AddNewClient()
+{
+	Information info;
+	info = ReadNewClient();
+	AddDataLineToFile(NomFile, ConvertRecordToLine(info));
+}
+ 
+void AddClients()
+{
+	char var = 'Y';
+	do
+	{
+		system("cls");
+		AddNewClient();
+		cout << "\nClient Added Successfully, do you want to add more clients? Y/N? ";
+		cin >> var;
+	} while (toupper(var) == 'Y');
+}
+
+int main()
+{
+	AddClients();
+}
